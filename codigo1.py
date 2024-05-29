@@ -79,13 +79,13 @@ while True:
     
     if paths_status == 200:
         km = (paths_data["paths"][0]["distance"])/1000          # Conversión de m a km
-        kMxL = int(km)/10                                       # Se asume rendimiento de 10km/L
+        kMxL = float(km)/10                                       # Se asume rendimiento de 10km/L
         hora = int(paths_data["paths"][0]["time"]/1000/60/60)
         minuto = int(paths_data["paths"][0]["time"]/1000/60%60)
         segundo = int(paths_data["paths"][0]["time"]/1000%60)
         print("Distancia recorrida: {0:.2f} km".format(km))
         print("Duración del viaje: {0:02d}:{1:02d}:{2:02d}".format(hora, minuto, segundo))
-        print("Combustible requerido (litros): " + str(kMxL) + " Litros")
+        print("Combustible requerido (litros): {0:.2f} Litros".format(kMxL))
 
         for each in range(len(paths_data["paths"][0]["instructions"])):
             path = paths_data["paths"][0]["instructions"][each]["text"]
